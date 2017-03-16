@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="94003e91-5211-4764-a03e-23b2526e3bc0" name="Default" comment="Add some more basic functionality">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Neo4JStrategyClosure.php" />
+    <list default="true" id="94003e91-5211-4764-a03e-23b2526e3bc0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Neo4JQueryRunner.php" afterPath="$PROJECT_DIR$/src/Neo4JQueryRunner.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Neo4JStrategyBuilder.php" afterPath="$PROJECT_DIR$/src/Neo4JStrategyBuilder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Neo4JStrategyInterface.php" afterPath="$PROJECT_DIR$/src/Neo4JStrategyInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Neo4JStrategy.php" afterPath="$PROJECT_DIR$/src/Neo4JStrategy.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +22,7 @@
         <entry file="file://$PROJECT_DIR$/src/Neo4JQueryBuilder.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="104">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -51,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Neo4JQueryRunner.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Neo4JQueryRunner.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Neo4JQueryRunner.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="8" column="78" lean-forward="false" selection-start-line="8" selection-start-column="78" selection-end-line="8" selection-end-column="78" />
+            <state relative-caret-position="26">
+              <caret line="1" column="35" lean-forward="true" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -81,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Neo4JStrategy.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Neo4JStrategy.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Neo4JStrategy.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="624">
+              <caret line="24" column="63" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -100,12 +97,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Neo4JDriver.php" />
-        <option value="$PROJECT_DIR$/src/Neo4JStrategy.php" />
         <option value="$PROJECT_DIR$/src/Neo4JQueryBuilder.php" />
         <option value="$PROJECT_DIR$/src/Neo4JStrategyBuilder.php" />
         <option value="$PROJECT_DIR$/src/Neo4JStrategyClosure.php" />
         <option value="$PROJECT_DIR$/src/Neo4JStrategyInterface.php" />
         <option value="$PROJECT_DIR$/src/Neo4JQueryRunner.php" />
+        <option value="$PROJECT_DIR$/src/Neo4JStrategy.php" />
       </list>
     </option>
   </component>
@@ -190,6 +187,7 @@
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="ignore_missing_gitignore" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="BashConfigurationType" factoryName="Bash">
@@ -265,7 +263,7 @@
       <option name="presentableId" value="Default" />
       <updated>1489687577091</updated>
       <workItem from="1489687578944" duration="3000" />
-      <workItem from="1489690948255" duration="2040000" />
+      <workItem from="1489690948255" duration="3151000" />
     </task>
     <task id="LOCAL-00001" summary="Add class stubs">
       <created>1489691212434</created>
@@ -309,11 +307,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489692356666</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add some more basic functionality, integrate query builder">
+      <created>1489693001917</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1489693001917</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2043000" />
+    <option name="totallyTimeSpent" value="3154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -354,7 +359,8 @@
     <MESSAGE value="Outline the basic functionality of the query runner" />
     <MESSAGE value="More basic functionality" />
     <MESSAGE value="Pass Client as parameter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pass Client as parameter" />
+    <MESSAGE value="Add some more basic functionality, integrate query builder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add some more basic functionality, integrate query builder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -369,15 +375,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Neo4JQueryBuilder.php">
+    <entry file="file://$PROJECT_DIR$/src/Neo4JQueryRunner.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="26">
+          <caret line="1" column="35" lean-forward="true" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Neo4JStrategy.php">
+    <entry file="file://$PROJECT_DIR$/src/Neo4JQueryBuilder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
@@ -409,10 +415,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Neo4JQueryRunner.php">
+    <entry file="file://$PROJECT_DIR$/src/Neo4JStrategy.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="78" lean-forward="false" selection-start-line="8" selection-start-column="78" selection-end-line="8" selection-end-column="78" />
+        <state relative-caret-position="624">
+          <caret line="24" column="63" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
           <folding />
         </state>
       </provider>
