@@ -3,7 +3,8 @@ use GraphAware\Neo4j\Client\Client;
 
 class Neo4JQueryRunner
 {
-    public static function insertRecord($modelId, $subject, $object, $predicate, $language, $author, $epoch) {
+    public static function insertRecord(Client $client, $modelId, $subject, $object, $predicate, $language, $author, $epoch) {
+
 
     }
 
