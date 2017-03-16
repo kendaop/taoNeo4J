@@ -2,22 +2,23 @@
 class Neo4JQueryBuilder
 {
     public static function insertNode($data) {
-        $query = "CREATE (item {properties})";
+        $query = "CREATE (item:RDF_NODE {properties})";
         $params = ['properties' => $data];
 
         return [$query, $params];
     }
 
     public static function find($id) {
-        $query = 'MATCH (item) WHERE item.id = $id RETURN item';
+        $query = 'MATCH (item:RDF_NODE) WHERE item.id = $id RETURN item';
         $params = ['id' => $id];
 
         return [$query, $params];
     }
 
-    public static function findRelationship($subject, $object, $relationship) {
-        $query = 'MATCH (subject {subject})-[r:RELATES_TO {relationship}]->(object {object}) RETURN properties(r) ';
-        $params = ['subject' => [$subject], 'object' => [$object], 'relationship' => $relationship];
+    public static function createRelationship($subject, $object, $relationship) {
+        $query = 'MATCH (a:RDF_NODE), (b:RDF_NODE) WHERE a.id = $subject AND b.id = $object CREATE (a)-[r:RELATES_TO {relationship}]->(b) RETURN r';
+        $params = ['subject' => $subject, 'object' => $object, 'relationship' => $relationship];
+
         return [$query, $params];
     }
 }

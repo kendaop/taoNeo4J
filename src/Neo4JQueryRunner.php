@@ -1,24 +1,14 @@
 <?php
 use GraphAware\Neo4j\Client\Client;
-use \GraphAware\Neo4j\Client\Stack;
+use \GraphAware\Neo4j\Client\StackInterface;
 use \GraphAware\Bolt\Result\Result;
 class Neo4JQueryRunner
 {
-    protected function pushStack(Stack $stack, $params) {
+    protected function pushStack(StackInterface $stack, $params) {
         return call_user_func_array([$stack, 'push'], $params);
     }
 
     public static function insertRecord(Client $client, $modelId, $subject, $object, $predicate, $language, $author, $epoch) {
-        $data = [
-            'modelId' => $modelId,
-            'subject' => $subject,
-            'object' => $object,
-            'predicate' => $predicate,
-            'language' => $language,
-            'author' => $author,
-            'epoch' => $epoch
-        ];
-
         $strategy = Neo4JStrategyBuilder::create()->add(function(Client $client, $data) use ($subject) {
             $stack = $client->stack();
             // see if the Subject node exists
@@ -41,15 +31,26 @@ class Neo4JQueryRunner
             // if the object node doesn't exist, insert it
             if (empty($data->getRecords())) {
                 static::pushStack($stack, Neo4JQueryBuilder::insertNode(['id' => $object]));
+
+                return $stack;
             }
 
-            // find the relationship between the subject and the object
-            static::pushStack($stack, Neo4JQueryBuilder::findRelationship($subject, $object, [
-                'id' => $predicate
+            return null;
+        })->add(function (Client $client, Result $data) use ($subject, $object, $modelId, $language, $author, $epoch) {
+            $stack = $client->stack();
+
+            // create a relationship between subject and object
+            static::pushStack($stack, Neo4JQueryBuilder::createRelationship($subject, $object, [
+                'modelid' => $modelId,
+                'l_language' => $language,
+                'author' => $author,
+                'epoch' => $epoch
             ]));
+
+            return $stack;
         });
 
-        return static::run($client, $data, $strategy);
+        return static::run($client, [], $strategy);
     }
 
     public static function run(Client $client, $data, Neo4JStrategyInterface $strategy) {
