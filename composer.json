@@ -21,7 +21,8 @@
     },
     "minimum-stability" : "dev",
     "require": {
-        "oat-sa/oatbox-extension-installer": "dev-master"
+        "oat-sa/oatbox-extension-installer": "dev-master",
+        "graphaware/neo4j-php-client": "^4.0"
     },
     "autoload" : {
         "psr-4" : {
