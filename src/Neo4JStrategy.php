@@ -23,5 +23,6 @@ class Neo4JStrategy implements Neo4JStrategyInterface
     public function add(callable $closure)
     {
         $this->closures[] = new Neo4JStrategyClosure($closure);
+        return $this;
     }
 }

@@ -81,8 +81,8 @@
       <file leaf-file-name="Neo4JStrategy.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Neo4JStrategy.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="24" column="63" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+            <state relative-caret-position="364">
+              <caret line="25" column="21" lean-forward="false" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -263,7 +263,7 @@
       <option name="presentableId" value="Default" />
       <updated>1489687577091</updated>
       <workItem from="1489687578944" duration="3000" />
-      <workItem from="1489690948255" duration="3151000" />
+      <workItem from="1489690948255" duration="3197000" />
     </task>
     <task id="LOCAL-00001" summary="Add class stubs">
       <created>1489691212434</created>
@@ -314,11 +314,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489693001917</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Implement Neo4JStrategy">
+      <created>1489694120532</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1489694120532</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3154000" />
+    <option name="totallyTimeSpent" value="3200000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -360,7 +367,8 @@
     <MESSAGE value="More basic functionality" />
     <MESSAGE value="Pass Client as parameter" />
     <MESSAGE value="Add some more basic functionality, integrate query builder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add some more basic functionality, integrate query builder" />
+    <MESSAGE value="Implement Neo4JStrategy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement Neo4JStrategy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -417,8 +425,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Neo4JStrategy.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="24" column="63" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+        <state relative-caret-position="364">
+          <caret line="25" column="21" lean-forward="false" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
           <folding />
         </state>
       </provider>
