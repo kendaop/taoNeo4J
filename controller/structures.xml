@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE structures SYSTEM "../doc/structures.dtd">
+<structures>
+	<structure id="taoNeo4J_main" name="TAO Neo4J Driver" level="15" group="main">
+		<description />
+		<sections>
+			<section id="taoNeo4J_main" name="TAO Neo4J Driver" url="/taoNeo4J/TaoNeo4J/index" />
+			<section id="taoNeo4J_other" name="Template" url="/taoNeo4J/TaoNeo4J/templateExample" />
+		</sections>
+	</structure>
+</structures>
