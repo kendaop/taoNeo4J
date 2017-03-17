@@ -1,4 +1,5 @@
 <?php
+namespace bt\taoNeo4J;
 interface Neo4JStrategyInterface
 {
     /**

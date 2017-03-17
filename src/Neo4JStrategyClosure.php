@@ -1,4 +1,5 @@
 <?php
+namespace bt\taoNeo4J;
 use GraphAware\Neo4j\Client\Client;
 class Neo4JStrategyClosure
 {
@@ -9,7 +10,8 @@ class Neo4JStrategyClosure
     }
 
     public function run(Client $client, $data) {
-        $stack = ($this->closure)($client, $data);
+        $closure = $this->closure;
+        $stack = $closure($client, $data);
         if ($stack) {
             return $client->runStack($stack);
         }

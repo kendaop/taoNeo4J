@@ -26,7 +26,7 @@
     },
     "autoload" : {
         "psr-4" : {
-            "bt\\taoNeo4J\\" : ""
+            "bt\\taoNeo4J\\" : "src/"
         }
     } 
 }

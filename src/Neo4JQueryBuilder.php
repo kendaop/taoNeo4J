@@ -1,4 +1,5 @@
 <?php
+namespace bt\taoNeo4J;
 class Neo4JQueryBuilder
 {
     public static function insertNode($data) {

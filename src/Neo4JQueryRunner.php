@@ -1,10 +1,14 @@
 <?php
+namespace bt\taoNeo4J;
+use GraphAware\Bolt\Result\Result;
+use GraphAware\Neo4j\Client\Client;
 use GraphAware\Neo4j\Client\ClientInterface;
 use \GraphAware\Neo4j\Client\StackInterface;
-use \GraphAware\Bolt\Result\Result;
+use GraphAware\Common\Result\ResultCollection;
+
 class Neo4JQueryRunner
 {
-    protected function pushStack(StackInterface $stack, $params) {
+    protected static function pushStack(StackInterface $stack, $params) {
         return call_user_func_array([$stack, 'push'], $params);
     }
 
@@ -14,29 +18,29 @@ class Neo4JQueryRunner
             // see if the Subject node exists
             static::pushStack($stack, Neo4JQueryBuilder::find($subject));
             return $stack;
-        })->add(function (Client $client, Result $data) use ($subject, $object) {
+        })->add(function (Client $client, ResultCollection $data) use ($subject, $object) {
             $stack = $client->stack();
 
             // if the subject node doesn't exist, insert it
-            if (empty($data->getRecords())) {
+            if (!($data->results()[0]->size())) {
                 static::pushStack($stack, Neo4JQueryBuilder::insertNode(['id' => $subject]));
             }
 
             // see if the object node exists
             static::pushStack($stack, Neo4JQueryBuilder::find($object));
             return $stack;
-        })->add(function (Client $client, Result $data) use ($subject, $object, $predicate) {
+        })->add(function (Client $client, ResultCollection $data) use ($subject, $object, $predicate) {
             $stack = $client->stack();
 
             // if the object node doesn't exist, insert it
-            if (empty($data->getRecords())) {
+            if (!($data->results()[0]->size())) {
                 static::pushStack($stack, Neo4JQueryBuilder::insertNode(['id' => $object]));
 
                 return $stack;
             }
 
             return null;
-        })->add(function (Client $client, Result $data) use ($subject, $object, $modelId, $language, $author, $epoch) {
+        })->add(function (Client $client, $data) use ($subject, $object, $modelId, $language, $author, $epoch) {
             $stack = $client->stack();
 
             // create a relationship between subject and object
@@ -55,7 +59,7 @@ class Neo4JQueryRunner
 
     public static function run(Client $client, $data, Neo4JStrategyInterface $strategy) {
         foreach ($strategy->getClosures() as $closure) {
-            $data = $closure->run($data, $client);
+            $data = $closure->run($client, $data);
         }
 
         return $data;

@@ -1,4 +1,5 @@
 <?php
+namespace bt\taoNeo4J;
 use \GraphAware\Neo4j\Client\Client;
 
 class Neo4JStrategy implements Neo4JStrategyInterface
