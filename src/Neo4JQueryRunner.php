@@ -58,16 +58,20 @@ class Neo4JQueryRunner
     }
 
     public static function delete(ClientInterface $client, $resourceUri, $writableModels, $deleteReferences = false) {
-        if ($deleteReferences) {
-            return static::deleteReferences($client, $resourceUri, $writableModels);
-        }
+
         $strategy = Neo4JStrategyBuilder::create()->add(function(Client $client, $data) use ($resourceUri, $writableModels)  {
             $stack = $client->stack();
 
             static::pushStack($stack, Neo4JQueryBuilder::deletePredicates($resourceUri, $writableModels));
         });
 
-        return static::run($client, $resourceUri, $strategy);
+        $result = static::run($client, $resourceUri, $strategy);
+
+        if ($deleteReferences) {
+            return static::deleteReferences($client, $resourceUri, $writableModels);
+        }
+
+        return $result;
     }
 
     protected static function deleteReferences(ClientInterface $client, $resourceUri, $writableModels) {
