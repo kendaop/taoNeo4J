@@ -21,6 +21,10 @@
 
 namespace bt\taoNeo4J\controller;
 
+use bt\Proxy\ExtensionsManager;
+use bt\taoNeo4J\Neo4JQueryRunner as QueryRunner;
+use GraphAware\Neo4j\Client\ClientBuilder;
+
 /**
  * Sample controller
  *
@@ -31,18 +35,28 @@ namespace bt\taoNeo4J\controller;
  */
 class TaoNeo4J extends \tao_actions_CommonModule {
 
+    protected $client;
+
     /**
      * initialize the services
      */
     public function __construct(){
         parent::__construct();
+
+        $ext = \common_ext_ExtensionsManager::singleton()->getExtensionById('taoNeo4J');
+        $username = $ext->getConfig('default')['username'];
+        $password = $ext->getConfig('default')['password'];
+        $host = $ext->getConfig('default')['host'];
+        $port = $ext->getConfig('default')['port'];
+
+        $this->client = ClientBuilder::create()
+            ->addConnection('tao', "http://$username:$password@$host")
+            ->build();
     }
 
-    /**
-     * A possible entry point to tao
-     */
-    public function index() {
-        echo __("Hello World");
+    public function insert() {
+        //QueryRunner::insertRecord($this->client, '', '', '', '', '', '', '');
+        //return $this->client->run('CREATE (n:Person) SET n += {infos}', ['infos' => ['name' => 'Ales', 'age' => 34]]);
     }
 
     public function templateExample() {

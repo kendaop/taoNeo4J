@@ -37,6 +37,7 @@ return array(
         array('grant', 'http://www.tao.lu/Ontologies/generis.rdf#taoNeo4JManager', array('ext'=>'taoNeo4J')),
     ),
     'install' => array(
+        'php' => dirname(__FILE__) . '/scripts/install.php',
     ),
     'uninstall' => array(
     ),

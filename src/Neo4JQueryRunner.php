@@ -1,5 +1,5 @@
 <?php
-use GraphAware\Neo4j\Client\Client;
+use GraphAware\Neo4j\Client\ClientInterface;
 use \GraphAware\Neo4j\Client\StackInterface;
 use \GraphAware\Bolt\Result\Result;
 class Neo4JQueryRunner
@@ -8,7 +8,7 @@ class Neo4JQueryRunner
         return call_user_func_array([$stack, 'push'], $params);
     }
 
-    public static function insertRecord(Client $client, $modelId, $subject, $object, $predicate, $language, $author, $epoch) {
+    public static function insertRecord(ClientInterface $client, $modelId, $subject, $object, $predicate, $language, $author, $epoch) {
         $strategy = Neo4JStrategyBuilder::create()->add(function(Client $client, $data) use ($subject) {
             $stack = $client->stack();
             // see if the Subject node exists
