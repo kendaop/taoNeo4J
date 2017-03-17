@@ -57,7 +57,7 @@ class Neo4JQueryRunner
         return static::run($client, [], $strategy);
     }
 
-    public static function run(Client $client, $data, Neo4JStrategyInterface $strategy) {
+    public static function run(ClientInterface $client, $data, Neo4JStrategyInterface $strategy) {
         foreach ($strategy->getClosures() as $closure) {
             $data = $closure->run($client, $data);
         }
