@@ -43,20 +43,23 @@ class TaoNeo4J extends \tao_actions_CommonModule {
     public function __construct(){
         parent::__construct();
 
-        $ext = \common_ext_ExtensionsManager::singleton()->getExtensionById('taoNeo4J');
+        $extensionManager = new ExtensionsManager();
+        $ext = $extensionManager->getExtensionById('taoNeo4J');
         $username = $ext->getConfig('default')['username'];
         $password = $ext->getConfig('default')['password'];
+        $connection = $ext->getConfig('default')['connection'];
         $host = $ext->getConfig('default')['host'];
         $port = $ext->getConfig('default')['port'];
 
+        $connectionString = "$connection://$username:$password@$host:$port";
+
         $this->client = ClientBuilder::create()
-            ->addConnection('tao', "http://$username:$password@$host")
+            ->addConnection('tao', $connectionString)
             ->build();
     }
 
     public function insert() {
-        //QueryRunner::insertRecord($this->client, '', '', '', '', '', '', '');
-        //return $this->client->run('CREATE (n:Person) SET n += {infos}', ['infos' => ['name' => 'Ales', 'age' => 34]]);
+        QueryRunner::insertRecord($this->client, '', '', '', '', '', '', '');
     }
 
     public function templateExample() {
