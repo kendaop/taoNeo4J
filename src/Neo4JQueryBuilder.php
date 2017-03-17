@@ -23,6 +23,20 @@ class Neo4JQueryBuilder
         return [$query, $params];
     }
 
+    public static function deletePredicates($subject, $writableModels) {
+        $query = 'MATCH (:RDF_NODE {id: $subject})->[r:RELATES_TO]->(:RDF_NODE) WHERE r.modelid IN {writableModels} DELETE r';
+        $params = ['subject' => $subject, 'writableModels' => $writableModels];
+
+        return [$query, $params];
+    }
+
+    public static function deletePredicateReferences($object, $writableModels) {
+        $query = 'MATCH (:RDF_NODE)->[r:RELATES_TO]->(:RDF_NODE {id: $object}) WHERE r.modelid IN {writableModels} DELETE r';
+        $params = ['object' => $object, 'writableModels' => $writableModels];
+
+        return [$query, $params];
+    }
+
 //    public static function findRelated($subject, $predicate, $otherProps = [], $orderBy = null) {
 //        $objectProps = [];
 //        $otherSubjectProps = [];
