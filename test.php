@@ -2,7 +2,6 @@
 require_once 'vendor/autoload.php';
 
 use GraphAware\Neo4j\Client\ClientBuilder;
-use GraphAware\Neo4j\Client\Client;
 
 
 $client = ClientBuilder::create()

@@ -22,4 +22,45 @@ class Neo4JQueryBuilder
 
         return [$query, $params];
     }
+
+//    public static function findRelated($subject, $predicate, $otherProps = [], $orderBy = null) {
+//        $objectProps = [];
+//        $otherSubjectProps = [];
+//        $otherPredicateProps = [];
+//        if (array_key_exists('predicate', $otherProps)) {
+//            $otherPredicateProps = $otherProps['predicate'];
+//        }
+//
+//        if (array_key_exists('subject', $otherProps)) {
+//            $otherSubjectProps = $otherProps['subject'];
+//        }
+//
+//        if (array_key_exists('object', $otherProps)) {
+//            $objectProps = $otherProps['object'];
+//        }
+//        $subjectProps = static::properties(array_merge(['id' => $subject], $otherSubjectProps), 'subject');
+//        $predicateProps = static::properties(array_merge(['id' => $predicate], $otherPredicateProps), 'predicate');
+//        $objectProps = static::properties($objectProps, 'object');
+//
+//        $query = 'MATCH (a:RDF_NODE'.$subjectProps[0].')-[r:RELATES_TO'.$predicateProps[0].']->(n:RDF_NODE'.$objectProps[0].') RETURN n';
+//        if ($orderBy) {
+//            $query += ' ORDER BY ' . $orderBy;
+//        }
+//        $params = array_merge($subjectProps[1], $predicateProps[1], $objectProps[1]);
+//        return [$query, $params];
+//    }
+//
+//    protected static function properties($props, $prefix) {
+//        if (empty($props)) {
+//            return ['', []];
+//        }
+//        $prefixedProps = [];
+//        foreach ($props as $key => $value) {
+//            $prefixedProps[$prefix . '_' . $key] = $value;
+//        }
+//
+//        return [' {' .implode(', ', array_map(function($keyName) use ($prefix) {
+//            return $keyName .': $'. $prefix .'_'. $keyName;
+//        }, array_keys($props))) . '}', $prefixedProps];
+//    }
 }

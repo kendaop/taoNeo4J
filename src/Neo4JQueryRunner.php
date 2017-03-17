@@ -1,6 +1,5 @@
 <?php
 namespace bt\taoNeo4J;
-use GraphAware\Bolt\Result\Result;
 use GraphAware\Neo4j\Client\Client;
 use GraphAware\Neo4j\Client\ClientInterface;
 use \GraphAware\Neo4j\Client\StackInterface;
@@ -40,7 +39,7 @@ class Neo4JQueryRunner
             }
 
             return null;
-        })->add(function (Client $client, $data) use ($subject, $object, $modelId, $language, $author, $epoch) {
+        })->add(function (Client $client, $data) use ($subject, $object, $predicate, $modelId, $language, $author, $epoch) {
             $stack = $client->stack();
 
             // create a relationship between subject and object
@@ -48,7 +47,8 @@ class Neo4JQueryRunner
                 'modelid' => $modelId,
                 'l_language' => $language,
                 'author' => $author,
-                'epoch' => $epoch
+                'epoch' => $epoch,
+                'id' => $predicate
             ]));
 
             return $stack;
@@ -56,6 +56,33 @@ class Neo4JQueryRunner
 
         return static::run($client, [], $strategy);
     }
+
+//    public static function getTypes(ClientInterface $client, $resourceUri) {
+//        $strategy = Neo4JStrategyBuilder::create()->add(function(Client $client, $resourceUri)  {
+//            $stack = $client->stack();
+//
+//            static::pushStack($stack, Neo4JQueryBuilder::findRelated($resourceUri, "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"));
+//        });
+//
+//        return static::run($client, $resourceUri, $strategy);
+//    }
+//
+//    public static function getPropertyValues(ClientInterface $client, $resourceUri, $propertyUri, $options = []) {
+//        $props = [];
+//        if (isset($options['lg'])) {
+//            $props = [
+//                'predicate' => [
+//                    'l_language' => $options['lg']
+//                ]
+//            ];
+//        }
+//
+//        $strategy = Neo4JStrategyBuilder::create()->add(function(Client $client, $resourceUri, $propertyUri, $props)  {
+//            $stack = $client->stack();
+//
+//            //static::pushStack($stack, Neo4JQueryBuilder::findRelated($resourceUri, $propertyUri, $props, ));
+//        });
+//    }
 
     public static function run(ClientInterface $client, $data, Neo4JStrategyInterface $strategy) {
         foreach ($strategy->getClosures() as $closure) {
